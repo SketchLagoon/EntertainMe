@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "search and save your favorite movies",
   "main": "server/server.js",
-  "repository": "https://github.com/SketchLagoon/movie-search.git",
+  "repository": "https://github.com/SketchLagoon/movie-search",
   "author": "Alex Wright <jawright94@gmail.com>",
   "license": "MIT",
   "scripts": {
