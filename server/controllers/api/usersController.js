@@ -4,8 +4,6 @@ const db = require('../../models');
 
 usersController.post('/', (req, res) => {
   const { email, password } = req.body;
-  console.log(req.body)
-
   db.User.create({ email, password })
     .then(user => res.json(user))
     .catch(err => res.json(err));
