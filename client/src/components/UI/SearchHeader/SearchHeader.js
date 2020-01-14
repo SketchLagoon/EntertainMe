@@ -6,12 +6,10 @@ import Octicon, { Search } from '@githubprimer/octicons-react';
 
 
 const SearchHeader = (props) => {
-  console.log(props)
   const handleSearchSubmit = (e) => {
       if (e.key === 'Enter'){
         const searchQuery = e.target.value
-        console.log(searchQuery)
-
+        
         Movies.search(searchQuery)
           .then(response => response.data)
           .then(data=> props.setSearchedMovieDisplay(data))
@@ -20,12 +18,24 @@ const SearchHeader = (props) => {
       } 
   }
 
+  const FadeIn = keyframes`
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 100
+  }
+`;
+
   const HeaderBG = styled.div`
     margin-top: 10vh;
     width: 100%;
     // height: 30vh;
     background: linear-gradient(130deg, #2193B0, #68D0E9);
     border-radius: 15px;
+    animation: ${FadeIn} 2s linear;
+
   `;
 
   const HeaderText = styled.h1`
@@ -37,22 +47,14 @@ const SearchHeader = (props) => {
     width: 50%;
     line-height: 61px;
     // letter-spacing: 0.05em;
+    animation: ${FadeIn} 3s linear;
   `;
 
   const HeaderSearchWrapper = styled.div`
     padding-left: 6vw;
     padding-bottom: 4vh;
     display: flex;
-  `;
-
-  const FadeIn = keyframes`
-    from {
-      opacity: 0
-    }
-
-    to {
-      opacity: 100
-    }
+    animation: ${FadeIn} 3s linear;
   `;
 
   const HeaderSearchInput = styled.input`
@@ -65,7 +67,6 @@ const SearchHeader = (props) => {
     border: none;
     outline: none;
 
-    animation: ${FadeIn} 0.5s linear;
 
     &::placeholder {
       color: rgba(255, 255, 255, 0.33);
@@ -103,7 +104,6 @@ const SearchHeader = (props) => {
     </HeaderBG>
   </>
   )
-  
 };
 
 export default SearchHeader;

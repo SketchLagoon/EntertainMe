@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const Background = () => {
   const BackgroundWrapper = styled.div`
-  height: 100vh;
+  height: 110vh;
   width: 100vw;
   position: absolute;
   z-index: -2;

@@ -4,20 +4,18 @@ import { Container, Grid } from '@material-ui/core';
 import AuthForms from "../../components/AuthForms/AuthForms";
 
 import Background from "../../components/UI/Background/Background"
-import SearchHeader from"../../components/UI/SearchHeader/SearchHeader"
+import SearchHeader from "../../components/UI/SearchHeader/SearchHeader"
+import SearchDisplay from "../../components/UI/SearchDisplay/SearchDisplay"
 
-import styled, { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Montserrat', sans-serif;
-
     margin: 0;
     padding: 0;
     overflow: hidden;
-
     color: white;
-
   }
   html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -89,7 +87,7 @@ const HomePage = () => {
             <SearchHeader setSearchedMovieDisplay={displayMovie}/>
         </Grid>
         <Grid item xs={6}>
-            
+          <SearchDisplay movie={movieResult}/>
         </Grid>
         <Grid item xs={6}>
           {user === null ? <AuthForms setLoggedUser={getUser}/> : <h1>favs</h1>}
