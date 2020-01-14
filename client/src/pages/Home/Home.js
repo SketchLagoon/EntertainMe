@@ -1,16 +1,20 @@
 import React, { useState } from "react";
+
 import AuthForms from "../../components/AuthForms/AuthForms";
 
+
 const HomePage = () => {
-  const [user, setUser] = useState(0);
+  let userIdentification = sessionStorage.getItem('userId');
+  const [user, setUser] = useState(userIdentification);
 
   const getUser = (userId) =>{
+    sessionStorage.setItem('userId', userId);
     setUser(userId)
   }
-  
+
   return (
   <>
-    <AuthForms setLoggedUser={getUser}/>
+    {user === undefined ? <AuthForms setLoggedUser={getUser}/> : <h1>favs</h1>}
   </>
   )
   

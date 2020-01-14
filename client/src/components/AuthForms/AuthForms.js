@@ -10,8 +10,7 @@ class AuthForms extends Component {
       this.state={
         redirectToReferrer: false,
         error: "",
-        logOrReg: true,
-        // user: 0
+        logOrReg: true
       };
   }
 
