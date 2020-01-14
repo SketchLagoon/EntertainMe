@@ -68,10 +68,15 @@ table {
 const HomePage = () => {
   let userIdentification = sessionStorage.getItem('userId');
   const [user, setUser] = useState(userIdentification);
+  const [movieResult, setMovieResult] = useState({})
 
   const getUser = (userId) =>{
     sessionStorage.setItem('userId', userId);
     setUser(userId)
+  }
+
+  const displayMovie = (movie) =>{
+    setMovieResult(movie)
   }
 
   return (
@@ -81,7 +86,7 @@ const HomePage = () => {
     <Container>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-            <SearchHeader/>
+            <SearchHeader setSearchedMovieDisplay={displayMovie}/>
         </Grid>
         <Grid item xs={6}>
             

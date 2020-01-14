@@ -5,8 +5,8 @@ import { Movies } from "../../../lib/API"
 import Octicon, { Search } from '@githubprimer/octicons-react';
 
 
-const SearchHeader = () => {
-
+const SearchHeader = (props) => {
+  console.log(props)
   const handleSearchSubmit = (e) => {
       if (e.key === 'Enter'){
         const searchQuery = e.target.value
@@ -14,7 +14,7 @@ const SearchHeader = () => {
 
         Movies.search(searchQuery)
           .then(response => response.data)
-          .then(data=> console.log(data))
+          .then(data=> props.setSearchedMovieDisplay(data))
         
         e.preventDefault();
       } 
