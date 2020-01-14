@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import API from "../../lib/API";
+import { Users } from "../../lib/API";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 
@@ -15,7 +15,7 @@ class AuthForms extends Component {
   }
 
   handleLoginSubmit = (email, password) => {
-    API.Users.login(email, password)
+    Users.login(email, password)
       .then(response => response.data)
       .then(userObj => {
         this.props.setLoggedUser(userObj.user.id)

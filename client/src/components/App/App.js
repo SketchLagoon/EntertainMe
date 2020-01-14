@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import API from '../../lib/API';
+import { Users } from '../../lib/API';
 
 import Home from '../../pages/Home/Home';
 
@@ -35,7 +35,7 @@ class App extends Component {
     // const { authToken } = this.state.auth;
     // if (!authToken) return;
 
-    API.Users.getMe()
+    Users.getMe()
       .then(response => response.data)
       .then(user => this.setState(prevState => ({ auth: { ...prevState.auth, user } })))
       .catch(err => console.log(err));

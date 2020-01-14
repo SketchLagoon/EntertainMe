@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import API from '../../lib/API';
+import { Users } from '../../lib/API';
 
 import Octicon, { Mail, Key } from '@githubprimer/octicons-react';
 
@@ -20,7 +20,7 @@ class RegistrationForm extends Component {
   handleRegistrationSubmit = event => {
     const { email, password} = this.state;
 
-    API.Users.create(email, password)
+    Users.create(email, password)
     .then(response => response.data)
 
     event.preventDefault();
