@@ -1,34 +1,24 @@
 {
   "name": "movie-search",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
-  },
+  "version": "1.0.0",
+  "description": "search and save your favorite movies",
+  "main": "server/server.js",
+  "repository": "https://github.com/SketchLagoon/movie-search.git",
+  "author": "Alex Wright <jawright94@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "install": "yarn run install:client && yarn run install:server",
+    "install:client": "cd client && yarn",
+    "install:server": "cd server && yarn",
+    "build": "cd client && yarn build",
+    "start": "node server/server.js",
+    "start:dev": "concurrently -n client,server \"yarn run client:dev\" \"yarn run server:dev\"",
+    "client:dev": "cd client && yarn start",
+    "server:dev": "cd server && yarn start:dev",
+    "heroku-postbuild": "yarn build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "concurrently": "^5.0.2",
+    "nodemon": "^2.0.2"
   }
 }
