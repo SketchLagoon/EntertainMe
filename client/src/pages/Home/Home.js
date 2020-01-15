@@ -8,6 +8,8 @@ import SearchHeader from "../../components/UI/SearchHeader/SearchHeader"
 import SearchDisplay from "../../components/UI/SearchDisplay/SearchDisplay"
 import MyFavorites from "../../components/UI/MyFavorites/MyFavorites"
 
+import { Movies } from "../../lib/API"
+
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
@@ -87,6 +89,11 @@ const HomePage = () => {
     setMovieResult(movie)
   }
 
+  const handleFavorite = (newFavorite) => {
+    newFavorite.UserId = parseInt(user)
+    Movies.favorite(newFavorite)
+  }
+
   return (
   <>
     <GlobalStyle/>
@@ -97,7 +104,7 @@ const HomePage = () => {
             <SearchHeader setSearchedMovieDisplay={displayMovie}/>
         </Grid>
         <Grid item xs={12} md={6}>
-          <SearchDisplay movie={movieResult}/>
+          <SearchDisplay movie={movieResult} favorite={handleFavorite}/>
         </Grid>
         <Grid item xs={12} md={6}>
           {user === null ? <AuthForms setLoggedUser={getUser}/> : <MyFavorites user={findUser()}/>}

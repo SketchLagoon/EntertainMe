@@ -22,10 +22,6 @@ const SearchDisplay = props => {
     !movie ? setMovie(SpaceJam) : setMovie(props.movie);
   }, [props.movie]);
 
-  const handleFavorite = () => {
-    alert("hello world")
-  }
-
 
   const Card = styled.div`
     width: 100%;
@@ -94,7 +90,7 @@ const SearchDisplay = props => {
 
   return (
     <Card>
-      <StarIcon onClick={handleFavorite}>
+      <StarIcon onClick={()=>{props.favorite(movie)}}>
         <Octicon icon={Star} height={50} />
       </StarIcon>
       <Poster src={movie.Poster}></Poster>

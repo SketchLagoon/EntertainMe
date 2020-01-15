@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Container, Grid } from "@material-ui/core";
 
+
 const MyFavorites = props => {
   const [favorites, setFavorites] = useState([]);
 

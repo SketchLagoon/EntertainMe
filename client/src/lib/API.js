@@ -15,9 +15,12 @@ export const Users = {
 };
 export const Movies = {
   search: searchQuery => {
+    return axios.post("/api/movies/search", { searchQuery });
+  },
+  favorite: searchQuery => {
     return axios.post("/api/movies/", { searchQuery });
   },
   getMy: userId => {
-    return axios.get("api/movies/:user", { userId });
+    return axios.get("api/movies/favorites", { userId });
   }
 };
