@@ -1,41 +1,55 @@
 import React from "react";
-import styled, {keyframes} from 'styled-components'
-import { Movies } from "../../../lib/API"
+import styled from "styled-components";
+import { Movies } from "../../../lib/API";
 
-import Octicon, { Search } from '@githubprimer/octicons-react';
+import Octicon, { Search } from "@githubprimer/octicons-react";
 
+const SearchHeader = props => {
+  //inspect this function to find the re-render issue
+  const handleSearchSubmit = e => {
+    if (e.key === "Enter") {
+      const searchQuery = e.target.value;
 
-const SearchHeader = (props) => {
-  const handleSearchSubmit = (e) => {
-      if (e.key === 'Enter'){
-        const searchQuery = e.target.value
-        
-        Movies.search(searchQuery)
-          .then(response => response.data)
-          .then(data=> props.setSearchedMovieDisplay(data))
-        
-        e.preventDefault();
-      } 
-  }
+      Movies.search(searchQuery)
+        .then(response => response.data)
+        .then(data => props.setSearchedMovieDisplay(data));
 
-  const FadeIn = keyframes`
-  from {
-    opacity: 0
-  }
+      e.preventDefault();
+      return;
+    }
+  };
 
-  to {
-    opacity: 100
-  }
-`;
+  const handleSearchClick = e => {
+    const searchQuery = document.getElementById("searchInput").value;
+
+    if (searchQuery === "") {
+      return
+    }
+    
+    Movies.search(searchQuery)
+      .then(response => response.data)
+      .then(data => props.setSearchedMovieDisplay(data));
+
+    e.preventDefault();
+    return;
+  };
+
+  //   const FadeIn = keyframes`
+  //   from {
+  //     opacity: 0
+  //   }
+  //   to {
+  //     opacity: 100
+  //   }
+  // `;
+  // animation: ${FadeIn} 2s linear;
 
   const HeaderBG = styled.div`
     margin-top: 10vh;
     width: 100%;
     // height: 30vh;
-    background: linear-gradient(130deg, #2193B0, #68D0E9);
+    background: linear-gradient(130deg, #2193b0, #68d0e9);
     border-radius: 15px;
-    animation: ${FadeIn} 2s linear;
-
   `;
 
   const HeaderText = styled.h1`
@@ -46,15 +60,17 @@ const SearchHeader = (props) => {
     font-weight: 600;
     width: 50%;
     line-height: 61px;
-    // letter-spacing: 0.05em;
-    animation: ${FadeIn} 3s linear;
+    @media (max-width: 768px) {
+      font-size: 25px;
+      line-height: 31px;
+      width: 80%;
+    }
   `;
 
   const HeaderSearchWrapper = styled.div`
     padding-left: 6vw;
     padding-bottom: 4vh;
     display: flex;
-    animation: ${FadeIn} 3s linear;
   `;
 
   const HeaderSearchInput = styled.input`
@@ -66,7 +82,6 @@ const SearchHeader = (props) => {
     font-weight: 300;
     border: none;
     outline: none;
-
 
     &::placeholder {
       color: rgba(255, 255, 255, 0.33);
@@ -90,20 +105,25 @@ const SearchHeader = (props) => {
     }
   `;
 
+  const SearchIconWrapper = styled.div``;
+
   return (
-  <>
-    <HeaderBG>
-        <HeaderText>
-            Search and Save Your Favorite Movies
-        </HeaderText>
+    <>
+      <HeaderBG>
+        <HeaderText>Search and Save Your Favorite Movies</HeaderText>
         <HeaderSearchWrapper>
-            <Octicon icon={Search} height={50}/>
-            <HeaderSearchInput placeholder="Space Jam" onKeyDown={handleSearchSubmit}></HeaderSearchInput>
+          <SearchIconWrapper onClick={handleSearchClick}>
+            <Octicon icon={Search} height={50} />
+          </SearchIconWrapper>
+          <HeaderSearchInput
+            id="searchInput"
+            placeholder="Space Jam"
+            onKeyDown={handleSearchSubmit}
+          ></HeaderSearchInput>
         </HeaderSearchWrapper>
-        
-    </HeaderBG>
-  </>
-  )
+      </HeaderBG>
+    </>
+  );
 };
 
 export default SearchHeader;

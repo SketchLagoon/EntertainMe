@@ -6,16 +6,22 @@ import AuthForms from "../../components/AuthForms/AuthForms";
 import Background from "../../components/UI/Background/Background"
 import SearchHeader from "../../components/UI/SearchHeader/SearchHeader"
 import SearchDisplay from "../../components/UI/SearchDisplay/SearchDisplay"
+import MyFavorites from "../../components/UI/MyFavorites/MyFavorites"
 
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Montserrat', sans-serif;
+    background-color: #2F3437;
     margin: 0;
     padding: 0;
     overflow: hidden;
     color: white;
+    @media (max-width: 768px) {
+      overflow: auto;
+      height: auto;
+    }
   }
   html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -68,10 +74,14 @@ const HomePage = () => {
   const [user, setUser] = useState(userIdentification);
   const [movieResult, setMovieResult] = useState({})
 
-  const getUser = (userId) =>{
+  const getUser = (userId,email) =>{
     sessionStorage.setItem('userId', userId);
+    sessionStorage.setItem('email', email);
     setUser(userId)
   }
+
+  const findUser = () => sessionStorage.getItem('email')
+  
 
   const displayMovie = (movie) =>{
     setMovieResult(movie)
@@ -83,14 +93,14 @@ const HomePage = () => {
     <Background/>
     <Container>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid item xs={12} md={12}>
             <SearchHeader setSearchedMovieDisplay={displayMovie}/>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <SearchDisplay movie={movieResult}/>
         </Grid>
-        <Grid item xs={6}>
-          {user === null ? <AuthForms setLoggedUser={getUser}/> : <h1>favs</h1>}
+        <Grid item xs={12} md={6}>
+          {user === null ? <AuthForms setLoggedUser={getUser}/> : <MyFavorites user={findUser()}/>}
         </Grid>
       </Grid>
     </Container>

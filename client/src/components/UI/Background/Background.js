@@ -11,6 +11,10 @@ const Background = () => {
   z-index: -2;
   overflow: hidden;
   background-color: #2F3437;
+  @media (max-width: 768px) {
+    overflow: auto;
+    height: auto;
+  }
   `
 
   const BackgroundHeader = styled.div`

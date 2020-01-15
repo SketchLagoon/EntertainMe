@@ -10,34 +10,22 @@ const SearchDisplay = props => {
     Title: "Space Jam",
     Year: "1996",
     Rated: "PG",
-    Released: "15 Nov 1996",
     Runtime: "88 min",
-    Genre: "Animation, Adventure, Comedy, Family, Fantasy, Sci-Fi, Sport",
-    Director: "Joe Pytka",
-    Writer: "Leo Benvenuti, Steve Rudnick, Timothy Harris, Herschel Weingrod",
-    Actors: "Michael Jordan, Wayne Knight, Theresa Randle, Manner Washington",
     Plot:
       "In a desperate attempt to win a basketball match and earn their freedom, the Looney Tunes seek the aid of retired basketball champion, Michael Jordan.",
-    Language: "English",
-    Country: "USA",
-    Awards: "5 wins & 7 nominations.",
     Poster:
       "https://m.media-amazon.com/images/M/MV5BMDgyZTI2YmYtZmI4ZC00MzE0LWIxZWYtMWRlZWYxNjliNTJjXkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg",
-    Metascore: "59",
-    imdbRating: "6.4",
-    imdbVotes: "147,313",
-    imdbID: "tt0117705",
-    Type: "movie",
-    DVD: "27 Aug 1997",
-    BoxOffice: "N/A",
-    Production: "Warner Home Video",
-    Website: "N/A",
-    Response: "True"
+    imdbRating: "6.4"
+  };
+
+  useEffect(() => {
+    !movie ? setMovie(SpaceJam) : setMovie(props.movie);
+  }, [props.movie]);
+
+  const handleFavorite = () => {
+    alert("hello world")
   }
 
-  useEffect(()=>{
-    !movie ? setMovie(SpaceJam) : setMovie(props.movie)
-  },[props.movie])
 
   const Card = styled.div`
     width: 100%;
@@ -45,6 +33,8 @@ const SearchDisplay = props => {
     border-radius: 15px;
     marging-bottom: 10vh;
     background-color: #41464a;
+    display: flex;
+    align-items: center;
   `;
 
   const Poster = styled.img`
@@ -55,26 +45,66 @@ const SearchDisplay = props => {
     top: 0;
   `;
 
-  const Title = styled.h1``;
+  const Title = styled.h1`
+    margin-top: 8px;
+    font-size: 25px;
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+  `;
 
-  const Details = styled.p``
+  const Details = styled.p`
+    margin-top: 12px;
+    font-weight: 300;
+  `;
 
-  const Plot = styled.p``
+  const Plot = styled.p`
+    margin-top: 8px;
+    opacity: 0.5;
+    font-weight: 300;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      opacity: 0.7;
+      font-weight: 400;
+    }
+  `;
 
   const About = styled.div`
-    position: relative;
-    width: 50%;
-    right: 0;
-    top: 0;
-  `
+    width: 38%;
+    margin: 0 auto;
+  `;
+
+  const StarIcon = styled.div`
+    position: absolute;
+    z-index: 10;
+    margin: 9% 0 0 1%;
+    color: rgba(255,255,255,0.75);
+
+    :hover {
+        color: rgba(255,255,255,1);
+    }
+
+    @media (max-width: 768px) {
+      margin-top: 18%;
+      margin-left: 2%;
+    }
+  `;
+
 
   return (
     <Card>
+      <StarIcon onClick={handleFavorite}>
+        <Octicon icon={Star} height={50} />
+      </StarIcon>
       <Poster src={movie.Poster}></Poster>
       <About>
-        <Octicon icon={Star} height={35}/>
-        <Title>{movie.Title} • {movie.Rated}</Title>
-        <Details>{movie.Year} • {movie.imdbRating} • {movie.Runtime}</Details>
+        <Title>
+          {movie.Title} • {movie.Rated}
+        </Title>
+        <Details>
+          {movie.Year} • {movie.imdbRating}/10 • {movie.Runtime}
+        </Details>
         <Plot>{movie.Plot}</Plot>
       </About>
     </Card>

@@ -18,7 +18,7 @@ class AuthForms extends Component {
     Users.login(email, password)
       .then(response => response.data)
       .then(userObj => {
-        this.props.setLoggedUser(userObj.user.id)
+        this.props.setLoggedUser(userObj.user.id, userObj.user.email)
         this.setState({
         //   user: userObj.user.id,
           redirectToReferrer: true,
