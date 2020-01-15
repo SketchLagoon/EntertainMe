@@ -9,10 +9,6 @@ usersController.post('/', (req, res) => {
     .catch(err => res.json(err));
 });
 
-usersController.get('/me', (req, res) => {
-  res.json(req.user);
-});
-
 usersController.post('/login', (req, res) => {
   const { email, password } = req.body;
 

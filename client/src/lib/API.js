@@ -21,15 +21,3 @@ export const Movies = {
     return axios.get("api/movies/:user", { userId });
   }
 };
-
-// Movies: {
-//     search: (searchQuery) => {
-//       axios.post('/api/movies/', {searchQuery});
-//     },
-//     getMy: (userId) => {
-//         return axios.get('api/movies/:user',{userId})
-//     }
-// }
-// Movies: {
-
-// }

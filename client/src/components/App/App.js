@@ -31,16 +31,6 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    // const { authToken } = this.state.auth;
-    // if (!authToken) return;
-
-    Users.getMe()
-      .then(response => response.data)
-      .then(user => this.setState(prevState => ({ auth: { ...prevState.auth, user } })))
-      .catch(err => console.log(err));
-  }
-
   render() {
     return (
         <div className='App'>
