@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 import Octicon, { Star } from "@githubprimer/octicons-react";
 
@@ -21,10 +21,6 @@ const SearchDisplay = props => {
   useEffect(() => {
     !movie ? setMovie(SpaceJam) : setMovie(props.movie);
   }, [props.movie]);
-
-  const handleFavorite = () => {
-    alert("hello world")
-  }
 
 
   const Card = styled.div`
@@ -94,7 +90,7 @@ const SearchDisplay = props => {
 
   return (
     <Card>
-      <StarIcon onClick={handleFavorite}>
+      <StarIcon onClick={()=>{props.favorite(movie)}}>
         <Octicon icon={Star} height={50} />
       </StarIcon>
       <Poster src={movie.Poster}></Poster>
