@@ -21,6 +21,6 @@ export const Movies = {
     return axios.post("/api/movies/", { searchQuery });
   },
   getMy: userId => {
-    return axios.get("api/movies/favorites", { userId });
+    return axios.post("api/movies/favorites", { userId });
   }
 };

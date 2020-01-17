@@ -81,13 +81,8 @@ const HomePage = () => {
     sessionStorage.setItem('email', email);
     setUser(userId)
   }
-
-  const findUser = () => sessionStorage.getItem('email')
   
-
-  const displayMovie = (movie) =>{
-    setMovieResult(movie)
-  }
+  const displayMovie = (movie) => setMovieResult(movie)
 
   const handleFavorite = (newFavorite) => {
     newFavorite.UserId = parseInt(user)
@@ -107,7 +102,7 @@ const HomePage = () => {
           <SearchDisplay movie={movieResult} favorite={handleFavorite}/>
         </Grid>
         <Grid item xs={12} md={6}>
-          {user === null ? <AuthForms setLoggedUser={getUser}/> : <MyFavorites user={findUser()}/>}
+          {user === null ? <AuthForms setLoggedUser={getUser}/> : <MyFavorites />}
         </Grid>
       </Grid>
     </Container>

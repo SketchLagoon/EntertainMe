@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { Users } from '../../lib/API';
-
 import Home from '../../pages/Home/Home';
-
 // import Register from '../../pages/Register/Register';
-
 // import NotFound from '../../pages/NotFound/NotFound';
-
 
 class App extends Component {
   constructor(props) {

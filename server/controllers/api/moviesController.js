@@ -16,15 +16,14 @@ moviesController.post('/search', (req, res) => {
 
 moviesController.post('/', (req,res)=>{
   const newMovie = req.body.searchQuery
-  // console.log(newMovie)
   db.Movie.create(newMovie)
     .then(movie => res.json(movie))
     .catch(err => res.json(err));
 })
 
-moviesController.get('/', (req,res)=>{
-  db.Movie.find({where: {UserId: req.userId}})
-    .then(response=>response.json())
+moviesController.post('/favorites', (req,res)=>{
+  console.log(req.body)
+  db.Movie.findAll({where: {UserId: parseInt(req.body.userId)}})
     .then(movies=>res.json(movies))
     .catch(err=>res.json(err))
 })

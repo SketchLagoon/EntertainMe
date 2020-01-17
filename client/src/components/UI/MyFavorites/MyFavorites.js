@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Container, Grid } from "@material-ui/core";
+import { Movies } from "../../../lib/API"
+
 
 
 const MyFavorites = props => {
   const [favorites, setFavorites] = useState([]);
 
-  const [user, setUser] = useState("email@email.com");
-
   useEffect(() => {
-    setUser(props.user);
-    //call to api to find user's favorite movies
-  }, [props.user]);
+    Movies.getMy(sessionStorage.getItem('userId'))
+      .then(myFavoriteMovies => setFavorites(myFavoriteMovies.data))
+      .catch(err=>console.log(err))
+  }, []);
 
   const Card = styled.div`
     width: 100%;
@@ -44,27 +45,27 @@ const MyFavorites = props => {
 
   const FavoriteSamples = styled.img`
     width: 100%;
+    height: 90%;
     border-radius: 15px;
   `;
 
   return (
     <Card>
       <CardHeader>
-        <CardHeaderTitle>{user}</CardHeaderTitle>
-        <button>view all</button>
-
+        <CardHeaderTitle>{sessionStorage.getItem('email')}</CardHeaderTitle>
+        {/* <button>view all</button> */}
       </CardHeader>
       <Container style={{marginTop: "20px"}}>
         <Grid container spacing={3}>
-          <Grid item xs={12} md={4}>
-            <FavoriteSamples src="https://m.media-amazon.com/images/M/MV5BMDgyZTI2YmYtZmI4ZC00MzE0LWIxZWYtMWRlZWYxNjliNTJjXkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg" />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <FavoriteSamples src="https://m.media-amazon.com/images/M/MV5BMDgyZTI2YmYtZmI4ZC00MzE0LWIxZWYtMWRlZWYxNjliNTJjXkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg" />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <FavoriteSamples src="https://m.media-amazon.com/images/M/MV5BMDgyZTI2YmYtZmI4ZC00MzE0LWIxZWYtMWRlZWYxNjliNTJjXkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg" />
-          </Grid>
+          {
+            favorites.length 
+            && 
+            favorites.map((movie)=>(
+              <Grid item xs={12} md={4}>
+                <FavoriteSamples src={movie.Poster} />
+              </Grid>
+            ))
+          }
         </Grid>
       </Container>
     </Card>
