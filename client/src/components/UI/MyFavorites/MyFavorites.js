@@ -52,7 +52,7 @@ const MyFavorites = props => {
   return (
     <Card>
       <CardHeader>
-        <CardHeaderTitle>{sessionStorage.getItem('email')}</CardHeaderTitle>
+        <CardHeaderTitle>{sessionStorage.getItem('email')}'s Favorites</CardHeaderTitle>
         {/* <button>view all</button> */}
       </CardHeader>
       <Container style={{marginTop: "20px"}}>
