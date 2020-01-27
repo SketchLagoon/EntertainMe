@@ -110,7 +110,7 @@ const SearchHeader = props => {
   return (
     <>
       <HeaderBG>
-        <HeaderText>Search and Save Your Favorite Movies</HeaderText>
+        <HeaderText>Search & Save Your Favorite Shows & Movies</HeaderText>
         <HeaderSearchWrapper>
           <SearchIconWrapper onClick={handleSearchClick}>
             <Octicon icon={Search} height={50} />

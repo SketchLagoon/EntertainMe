@@ -70,7 +70,6 @@ table {
 }
 `
 
-
 const HomePage = () => {
   let userIdentification = sessionStorage.getItem('userId');
   const [user, setUser] = useState(userIdentification);
@@ -87,6 +86,7 @@ const HomePage = () => {
   const handleFavorite = (newFavorite) => {
     newFavorite.UserId = parseInt(user)
     Movies.favorite(newFavorite)
+    window.location.reload()
   }
 
   return (
