@@ -1,6 +1,6 @@
 # Entertainment Search README
 
-![screenshot.png](Entertainment%20Search%20README/Untitled.png)
+![screenshot.png](screenshot.png)
 
 ## What does this app do?
 
