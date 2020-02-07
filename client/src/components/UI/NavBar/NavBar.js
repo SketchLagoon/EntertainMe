@@ -19,12 +19,16 @@ const NavBar = props => {
     position: fixed;
     z-index: 99;
     filter: drop-shadow(0 0.2rem 1rem rgba(0,0,0,0.5));
-
+    margin-bottom: 50px;
   `;
 
   const HeaderLogo = styled.img`
     height: 20px;
     width: auto;
+    @media (max-width: 576px) {
+      height: 14px;
+      margin-top: 3px;
+    }
   `;
 
   return (
