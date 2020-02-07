@@ -38,14 +38,12 @@ const Favorites = props => {
     filter: drop-shadow(0 0 0.3rem rgba(0,0,0,0.4));
     overflow: visible;
 
-    &:hover {
-      filter: drop-shadow(0 0 1rem rgba(0,0,0,1));
-      position: relative;
-      bottom: 16px;
-    }
-
     @media (min-width: 600px) {
-      // margin: 8px;
+      &:hover {
+        filter: drop-shadow(0 0 1rem rgba(0,0,0,1));
+        position: relative;
+        bottom: 16px;
+      }
     }
   `;
 
