@@ -7,6 +7,10 @@ const SearchResultSummary = ({featuredMovie}) => {
     text-align: center;
     margin-top: 3vh;
     margin-bottom: 8px;
+    @media (min-width: 600px) {
+      // background-color: red;
+      width: 50vw;
+    }
   `;
 
   const Title = styled.h1`

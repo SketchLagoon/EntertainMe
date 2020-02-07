@@ -100,6 +100,15 @@ table {
     -webkit-animation-duration: 3s;
   `;
 
+  const DesktopWidth = styled.div`
+  @media (min-width: 600px) {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  `
+
   useEffect(() => {
     user
       ? Movies.getMy(sessionStorage.getItem("userId"))
@@ -143,12 +152,14 @@ table {
             setMovieResult={setMovieResult}
             setHDPoster={setHDPoster}
           />
-          <SearchResultHeader
-            poster={HDPoster}
-            movieResult={movieResult}
-            handleFavorite={handleFavorite}
-          />
-          <SearchResultSummary featuredMovie={movieResult} />
+          <DesktopWidth>
+            <SearchResultHeader
+              poster={HDPoster}
+              movieResult={movieResult}
+              handleFavorite={handleFavorite}
+            />
+            <SearchResultSummary featuredMovie={movieResult} />
+          </DesktopWidth>
           <Favorites
             favs={favorites}
             setMovieResult={setMovieResult}

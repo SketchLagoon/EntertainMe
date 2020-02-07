@@ -23,7 +23,6 @@ const SideNav = ({ open, setLoggedUser, user }) => {
     @media (max-width: 576px) {
       width: 70vw;
     }
-    }
   `;
 
   const LogoutButton = styled.button`
