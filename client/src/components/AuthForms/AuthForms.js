@@ -1,26 +1,53 @@
 import React, { Component } from "react";
+import styled from "styled-components";
 
 import { Users } from "../../lib/API";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 
+const AuthContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const LogRegBtn = styled.button`
+  margin-top: 2vh;
+  border: none;
+  background-color: transparent;
+  color: rgba(255,255,255,0.5);
+  font-size: 14px;
+
+  &:focus{
+    color: color: rgba(255,255,255,1);
+  }
+
+  &:hover{
+    color: rgba(255,255,255,1);
+  }
+`;
+
+const ErrorText = styled.p`
+  margin-bottom: 8px;
+`
+
 class AuthForms extends Component {
-  constructor(props){
-      super(props);
-      this.state={
-        redirectToReferrer: false,
-        error: "",
-        logOrReg: true
-      };
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirectToReferrer: false,
+      error: "",
+      logOrReg: true
+    };
   }
 
   handleLoginSubmit = (email, password) => {
     Users.login(email, password)
       .then(response => response.data)
       .then(userObj => {
-        this.props.setLoggedUser(userObj.user.id, userObj.user.email)
+        this.props.setLoggedUser(userObj.user.id, userObj.user.email);
         this.setState({
-        //   user: userObj.user.id,
+          //   user: userObj.user.id,
           redirectToReferrer: true,
           error: ""
         });
@@ -54,25 +81,25 @@ class AuthForms extends Component {
     const auth = this.state.logOrReg ? (
       <LoginForm onSubmit={this.handleLoginSubmit} />
     ) : (
-      <RegistrationForm />
-    )
+      <RegistrationForm toggleLogReg={this.toggleLogReg}/>
+    );
 
     return (
-      <div className="Home">
+      <AuthContainer>
         {this.state.error && (
-          <div className="row">
-            <div className="col">
-              <div className="alert alert-danger mb-3" role="alert">
+              <ErrorText role="alert">
                 {this.state.error}
-              </div>
-            </div>
-          </div>
+              </ErrorText>
         )}
 
         {auth}
-        <button onClick={this.toggleLogReg}>login / register toggle</button>
-      </div>
-    )
+        <LogRegBtn onClick={this.toggleLogReg}>
+          {this.state.logOrReg
+            ? "Need to Register?"
+            : "Already have an Account?"}
+        </LogRegBtn>
+      </AuthContainer>
+    );
   }
 }
 
