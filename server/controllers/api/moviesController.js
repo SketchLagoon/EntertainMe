@@ -9,6 +9,9 @@ moviesController.post('/search', (req, res) => {
     .then(response => response.json())
     .then(data=>{
       console.log(data)
+      if (data.Poster === "N/A") {
+        data.Poster = "https://cdn.discordapp.com/attachments/669315705807699978/675391150965784576/9d386079aebd7f0396671e94f3dd649d.png"
+      }
       res.json(data)
     })
     .catch(err=>res.json(err))
@@ -23,6 +26,9 @@ moviesController.post('/', (req,res)=>{
 
 moviesController.post('/favorites', (req,res)=>{
   console.log(req.body)
+  if (req.body.Poster === "N/A") {
+    req.body.Poster = "https://cdn.discordapp.com/attachments/669315705807699978/675391150965784576/9d386079aebd7f0396671e94f3dd649d.png"
+  }
   db.Movie.findAll({where: {UserId: parseInt(req.body.userId)}})
     .then(movies=>res.json(movies))
     .catch(err=>res.json(err))
