@@ -14,6 +14,8 @@ import SearchResultSummary from "../../components/UI/SearchResultSummary/SearchR
 import Favorites from "../../components/UI/Favorites/Favorites";
 import LandingPage from "../../components/UI/LandingPage/LandingPage";
 
+import SearchHeader from "../../components/UI/SearchHeader/SearchHeader";
+
 import { Movies } from "../../lib/API";
 
 import styled, { keyframes, createGlobalStyle } from "styled-components";
@@ -33,7 +35,6 @@ const HomePage = () => {
       opacity: 100;
     }
   `;
-
 
   const GlobalStyle = createGlobalStyle`
   body {
@@ -101,13 +102,13 @@ table {
   `;
 
   const DesktopWidth = styled.div`
-  @media (min-width: 600px) {
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-  `
+    @media (min-width: 600px) {
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+  `;
 
   useEffect(() => {
     user
@@ -125,6 +126,7 @@ table {
           })
           .catch(err => console.log(err))
       : console.log("no user logged in");
+
   }, [user]);
 
   const getUser = (userId, email) => {
@@ -152,19 +154,31 @@ table {
             setMovieResult={setMovieResult}
             setHDPoster={setHDPoster}
           />
-          <DesktopWidth>
-            <SearchResultHeader
-              poster={HDPoster}
-              movieResult={movieResult}
-              handleFavorite={handleFavorite}
-            />
-            <SearchResultSummary featuredMovie={movieResult} />
-          </DesktopWidth>
-          <Favorites
-            favs={favorites}
-            setMovieResult={setMovieResult}
-            setHDPoster={setHDPoster}
-          />
+          {movieResult ? (
+            <>
+              <DesktopWidth>
+                <SearchResultHeader
+                  poster={HDPoster}
+                  movieResult={movieResult}
+                  handleFavorite={handleFavorite}
+                />
+                <SearchResultSummary featuredMovie={movieResult} />
+              </DesktopWidth>
+              {favorites.length ? (
+                <Favorites
+                  favs={favorites}
+                  setMovieResult={setMovieResult}
+                  setHDPoster={setHDPoster}
+                />
+              ) : (
+                <></>
+              )}
+            </>
+          ) : (
+            <>
+              <SearchHeader setMovieResult={setMovieResult} setHDPoster={setHDPoster}></SearchHeader>
+            </>
+          )}
         </Dashboard>
       ) : (
         <>

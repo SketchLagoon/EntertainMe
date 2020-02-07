@@ -12,7 +12,12 @@ const SearchHeader = props => {
 
       Movies.search(searchQuery)
         .then(response => response.data)
-        .then(data => props.setSearchedMovieDisplay(data));
+        .then(data => {
+          props.setMovieResult(data)
+          console.log(data)
+          props.setHDPoster(data.Poster.replace("X300",""))
+          console.log(data.Poster.replace("X300",""))
+        });
 
       e.preventDefault();
       return;
@@ -28,7 +33,12 @@ const SearchHeader = props => {
     
     Movies.search(searchQuery)
       .then(response => response.data)
-      .then(data => props.setSearchedMovieDisplay(data));
+      .then(data => {
+        props.setMovieResult(data)
+        console.log(data)
+        props.setHDPoster(data.Poster.replace("X300",""))
+        console.log(data.Poster.replace("X300",""))
+      });
 
     e.preventDefault();
     return;
@@ -45,8 +55,8 @@ const SearchHeader = props => {
   // animation: ${FadeIn} 2s linear;
 
   const HeaderBG = styled.div`
-    margin-top: 10vh;
-    width: 100%;
+    width: 90vw;
+    margin: 10vh auto;
     // height: 30vh;
     background: linear-gradient(130deg, #2193b0, #68d0e9);
     border-radius: 15px;

@@ -19,25 +19,46 @@ const Favorites = props => {
     &::-webkit-scrollbar {
       display: none;
     }
+
+    @media (min-width: 600px) {
+      width: 100%;
+      flex-wrap: wrap;
+      overflow: visible;
+    }
+
+
   `;
 
   const FavoritesCard = styled.img`
     border-radius: 10px;
-    height: 30vh;
+    height: 300px !important;
+    width: auto;
+    max-width: 200px;
     margin: 0px 0px 16px 16px;
     filter: drop-shadow(0 0 0.3rem rgba(0,0,0,0.4));
+    overflow: visible;
+
+    &:hover {
+      filter: drop-shadow(0 0 1rem rgba(0,0,0,1));
+      position: relative;
+      bottom: 16px;
+    }
+
+    @media (min-width: 600px) {
+      // margin: 8px;
+    }
   `;
 
   const FavoritesBG = styled.div`
     background: #282c2f;
     width: calc(100vw - 32px);
     padding-top: 4px;
-    border-radius: 10px 10px 10px 10px;
-    // filter: drop-shadow(0 -0.3rem 0.3rem rgba(0,0,0,0.2));
+    border-radius: 10px;
     box-shadow: inset 8px 8px 16px #202426, 
             inset -8px -8px 16px #303438;
     margin-left: 16px;
     margin-bottom: 5vh;
+    
   `;
 
   return (
