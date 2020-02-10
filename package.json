@@ -1,7 +1,7 @@
 {
   "name": "movie-search",
   "version": "1.0.0",
-  "description": "search and save your favorite movies",
+  "description": "search and save your favorite movies and tv shows",
   "main": "server/server.js",
   "repository": "https://github.com/SketchLagoon/movie-search",
   "author": "Alex Wright <jawright94@gmail.com>",
