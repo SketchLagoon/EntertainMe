@@ -33,6 +33,7 @@ const Favorites = props => {
     border-radius: 10px;
     height: 300px !important;
     width: auto;
+    min-width: 199px;
     max-width: 200px;
     margin: 0px 0px 16px 16px;
     filter: drop-shadow(0 0 0.3rem rgba(0,0,0,0.4));

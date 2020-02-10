@@ -12,6 +12,9 @@ const NavBar = props => {
     height: 20px;
     width: calc(100% - 64px);
     background: #2F3437;
+    box-shadow:  20px 20px 60px #282c2f, 
+             -20px -20px 60px #363c3f;
+    border-radius: 0 0 10px 10px;
     padding: 16px 32px;
     display: flex;
     justify-content: space-between;

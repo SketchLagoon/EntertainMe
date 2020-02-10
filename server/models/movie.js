@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
       Runtime: DataTypes.STRING,
       Plot: DataTypes.STRING,
       Poster: DataTypes.STRING,
-      imdbRating: DataTypes.STRING
+      imdbRating: DataTypes.STRING,
+      embedSRC: DataTypes.STRING
     },
     {}
   );

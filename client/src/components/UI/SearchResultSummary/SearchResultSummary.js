@@ -6,7 +6,7 @@ const SearchResultSummary = ({featuredMovie}) => {
   const SummaryContainer = styled.div`
     text-align: center;
     margin-top: 3vh;
-    margin-bottom: 8px;
+    margin-bottom: 3vh;
     @media (min-width: 600px) {
       // background-color: red;
       width: 50vw;
@@ -41,6 +41,24 @@ const SearchResultSummary = ({featuredMovie}) => {
     font-weight: 500;
     margin-top: 3vh;
   `
+
+  const TrailerContainer = styled.div`
+    overflow: hidden;
+    // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)
+    padding-top: 56.25%;
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+
+    iframe {
+      border: 0;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  `
   
   return (
     <SummaryContainer>
@@ -64,6 +82,11 @@ const SearchResultSummary = ({featuredMovie}) => {
           <Plot>
             {featuredMovie.Plot}
           </Plot>
+        </Grid>
+        <Grid item xs={12}>
+          <TrailerContainer>
+            <iframe title="movie result trailer" src={featuredMovie.embedSRC} allowFullScreen></iframe>
+          </TrailerContainer>
         </Grid>
       </Grid>
     </SummaryContainer>
