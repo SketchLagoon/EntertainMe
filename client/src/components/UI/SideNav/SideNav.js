@@ -19,11 +19,23 @@ const SideNav = ({ open, setLoggedUser, user }) => {
     left: 0;
     width: 40vw;
     border-radius: 0 10px 10px 0;
-
+    overflow: hidden;
     @media (max-width: 576px) {
       width: 70vw;
     }
   `;
+
+  const SideNavImg = styled.img`
+    width: 200%;
+    bottom: -100px;
+    right: -250px;    
+    opacity: 0.15;
+    position: absolute;
+
+    @media (min-width: 600px) {
+      width: auto;
+    }
+  `
 
   const LogoutButton = styled.button`
     width: 250px;
@@ -61,6 +73,7 @@ const SideNav = ({ open, setLoggedUser, user }) => {
         <>
           <h1>{user}</h1>
           <LogoutButton onClick={logout}>Logout</LogoutButton>
+          <SideNavImg src="./img/iso-entertain.png"></SideNavImg>
         </>
       )}
     </StyledMenu>

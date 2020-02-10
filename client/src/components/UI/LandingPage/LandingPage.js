@@ -24,6 +24,10 @@ const LandingPage = props => {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
+    @media (min-width: 600px) {
+      flex-direction: row;
+    }
   `;
 
   const HeaderLogo = styled.img`
@@ -40,6 +44,17 @@ const LandingPage = props => {
     justify-content: center;
     // margin-bottom: 20vh;
   `
+  const HeaderArtwork = styled.img`
+    animation: ${FadeIn} 2s linear;
+    width: 30vh;
+    margin-top: 5vh;
+    
+    @media (min-width: 600px) {
+      flex-direction: row;
+      margin-top: 0;
+      margin-left: 10vw;
+    }
+  `;
 
   return (
     <LandingContainer>
@@ -48,6 +63,7 @@ const LandingPage = props => {
         <HeaderLogo src="./img/logo-white.png" />
         <AuthForms setLoggedUser={props.setLoggedUser}/>
       </HeaderContainer>
+      <HeaderArtwork src="./img/iso-entertain.png"></HeaderArtwork>
     </LandingContainer>
   );
 };
