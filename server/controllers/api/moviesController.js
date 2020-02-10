@@ -8,16 +8,15 @@ moviesController.post('/search', (req, res) => {
   fetch(`https://www.omdbapi.com/?t=${searchQuery}&y=&plot=long&apikey=${process.env.OMDB_API_KEY}`)
     .then(response => response.json())
     .then(async data => {
-      if (data.Poster === "N/A") {
-        data.Poster = "./img/no-poster.png"
-      }
-
       const queryURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${data.Title}%20trailer&key=AIzaSyBW5XaQF7T2AK62lehbP67VRrPLVh9Su7Y`;
       const response = await axios.get(queryURL);
       const vidId = response.data.items[0].id.videoId;
       const embedSRC = `https://www.youtube.com/embed/${vidId}`
-
       data.embedSRC = embedSRC.toString()
+      if (data.Poster === "N/A") {
+        data.Poster = "./img/no-poster.png"
+        data.embedSRC = ""
+      }
       res.json(data)
     })
     .catch(err=>res.json(err))
