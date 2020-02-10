@@ -6,10 +6,20 @@ const SearchResultSummary = ({featuredMovie}) => {
   const SummaryContainer = styled.div`
     text-align: center;
     margin-top: 3vh;
-    margin-bottom: 3vh;
+    margin-left: 16px;
+    margin-bottom: 16px;
+
+    width: calc(100vw - 32px);
+
+    background: #282c2f;
+    padding: 32px 0 16px 0;
+    border-radius: 10px;
+    box-shadow: inset 8px 8px 16px #202426, 
+                inset -8px -8px 16px #303438;
+
     @media (min-width: 600px) {
-      // background-color: red;
-      width: 50vw;
+      padding: 48px 0 16px 0;
+      width: calc(50vw - 48px);
     }
   `;
 
@@ -50,8 +60,13 @@ const SearchResultSummary = ({featuredMovie}) => {
     width: 90%;
     margin: 0 auto;
 
+    @media (min-width: 600px) {
+      width: 95%;
+    }
+
     iframe {
       border: 0;
+      border-radius: 10px;
       height: 100%;
       left: 0;
       position: absolute;
