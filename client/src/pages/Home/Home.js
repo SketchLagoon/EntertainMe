@@ -139,6 +139,7 @@ table {
     //To do
     //conditional logic to determine duplicate / unfavorite if new fav is duplicate
     newFavorite.UserId = parseInt(user);
+    console.log(newFavorite)
     Movies.favorite(newFavorite);
     window.location.reload();
   };

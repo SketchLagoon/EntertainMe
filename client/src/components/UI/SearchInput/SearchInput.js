@@ -5,12 +5,12 @@ import Octicon, { Search } from "@githubprimer/octicons-react";
 import { Movies } from "../../../lib/API";
 
 const SearchInput = props => {
-  const SearchBar = styled.div`
-  // margin-top:-5px;
-  `;
+  const SearchBar = styled.div``;
 
   const ExpandingSearchInput = styled.input`
-    width: 0px;
+    width: 5px;
+    position: relative;
+    top: -2px;
     color: white;
     font-size: 16px;
     -webkit-transition: width 0.4s ease-in-out;
@@ -34,7 +34,7 @@ const SearchInput = props => {
     if (e.key === "Enter") {
       const searchQuery = e.target.value;
 
-      Movies.search(searchQuery)
+      Movies.search(searchQuery.replace(".",""))
         .then(response => response.data)
         .then(data => {
           props.setMovieResult(data)

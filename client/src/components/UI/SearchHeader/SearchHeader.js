@@ -10,7 +10,7 @@ const SearchHeader = props => {
     if (e.key === "Enter") {
       const searchQuery = e.target.value;
 
-      Movies.search(searchQuery)
+      Movies.search(searchQuery.replace(".",""))
         .then(response => response.data)
         .then(data => {
           props.setMovieResult(data)
