@@ -1,5 +1,5 @@
 # EntertainmenMe README
-
+[Try Me Out!](https://infinite-plains-20028.herokuapp.com/)
 ![screenshot.png](screenshot.png)
 
 ## What does this app do?
