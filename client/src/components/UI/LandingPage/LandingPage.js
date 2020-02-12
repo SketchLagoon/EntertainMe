@@ -15,11 +15,23 @@ const LandingPage = props => {
     }
   `;
 
+
+
+
+
   const LandingContainer = styled.div`
-    background: linear-gradient(135deg, #2193b0, #68d0e9);
+  background: linear-gradient(135deg, #2193b0, #68d0e9);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden !important;
+  `
+
+  const FormContainer = styled.div`
+    position: absolute;
+    z-index: 1;
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,14 +68,53 @@ const LandingPage = props => {
     }
   `;
 
+
+  const Circle1 = styled.div`
+  animation: ${FadeIn} 3s linear;
+  height: 100vh;
+  width: 100vh;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  position: relative;
+  z-index: 0;
+  top: -25vh;
+  left: -12vh;
+  
+  @media (min-width: 1025px) {
+    height: 90vw;
+    width: 90vw;
+  }
+  `
+
+  const Circle2 = styled.div`
+  animation: ${FadeIn} 3s linear;
+  height: 90vh;
+  width: 90vh;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  position: relative;
+  z-index: 0;
+  top:-50vh;
+
+  @media (min-width: 1025px) {
+    height: 90vw;
+    width: 90vw;
+    top:-120vh;
+    right: -75vh;
+  }
+ `
   return (
     <LandingContainer>
-      <HeaderContainer>
-        <Octicon icon={DeviceCameraVideo} size="large"/>
-        <HeaderLogo src="./img/logo-white.png" />
-        <AuthForms setLoggedUser={props.setLoggedUser}/>
-      </HeaderContainer>
-      <HeaderArtwork src="./img/iso-entertain.png"></HeaderArtwork>
+      <FormContainer>
+        <HeaderContainer>
+          <Octicon icon={DeviceCameraVideo} size="large"/>
+          <HeaderLogo src="./img/logo-white.png" />
+          <AuthForms setLoggedUser={props.setLoggedUser}/>
+        </HeaderContainer>
+        <HeaderArtwork src="./img/iso-entertain.png"></HeaderArtwork>
+      </FormContainer>
+      <Circle1/>
+      <Circle2/>
     </LandingContainer>
   );
 };

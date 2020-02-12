@@ -31,6 +31,7 @@ const SideNav = ({ open, setLoggedUser, user }) => {
     right: -250px;    
     opacity: 0.15;
     position: absolute;
+    z-index: 0;
 
     @media (min-width: 600px) {
       width: auto;
@@ -49,6 +50,8 @@ const SideNav = ({ open, setLoggedUser, user }) => {
     background-color: rgba(255, 255, 255, 0.66);
     color: #2193b0;
     font-weight: 400;
+    position: relative;
+    z-index: 2;
 
     &:hover {
       background-color: rgba(255, 255, 255, 1);

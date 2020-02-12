@@ -28,7 +28,11 @@ const LogRegBtn = styled.button`
 `;
 
 const ErrorText = styled.p`
-  margin-bottom: 8px;
+  margin-bottom: 24px !important;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  color: rgba(255,255,255,0.33)
 `
 
 class AuthForms extends Component {
@@ -47,7 +51,6 @@ class AuthForms extends Component {
       .then(userObj => {
         this.props.setLoggedUser(userObj.user.id, userObj.user.email);
         this.setState({
-          //   user: userObj.user.id,
           redirectToReferrer: true,
           error: ""
         });
@@ -58,13 +61,13 @@ class AuthForms extends Component {
         switch (err.response.status) {
           case 401:
             message =
-              "Sorry, that email/password combination is not valid. Please try again.";
+              "INVALID LOGIN";
             break;
           case 500:
-            message = "Server error. Please try again later.";
+            message = "SERVER ERROR";
             break;
           default:
-            message = "Unknown error.";
+            message = "UNKNOWN ERROR";
         }
 
         this.setState({ error: message });
@@ -78,25 +81,14 @@ class AuthForms extends Component {
   };
 
   render() {
-    const auth = this.state.logOrReg ? (
-      <LoginForm onSubmit={this.handleLoginSubmit} />
-    ) : (
-      <RegistrationForm toggleLogReg={this.toggleLogReg}/>
-    );
+    const auth = this.state.logOrReg ? ( <LoginForm onSubmit={this.handleLoginSubmit} /> ) : ( <RegistrationForm toggleLogReg={this.toggleLogReg}/> );
 
     return (
       <AuthContainer>
-        {this.state.error && (
-              <ErrorText role="alert">
-                {this.state.error}
-              </ErrorText>
-        )}
-
+        {this.state.error && ( <ErrorText role="alert"> {this.state.error} </ErrorText> )}
         {auth}
         <LogRegBtn onClick={this.toggleLogReg}>
-          {this.state.logOrReg
-            ? "Need to Register?"
-            : "Already have an Account?"}
+          {this.state.logOrReg ? "Need to Register?" : "Already have an Account?"}
         </LogRegBtn>
       </AuthContainer>
     );
