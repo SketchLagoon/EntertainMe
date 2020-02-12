@@ -9,15 +9,10 @@ const LandingPage = props => {
     from {
       opacity: 0;
     }
-
     to {
       opacity: 100;
     }
   `;
-
-
-
-
 
   const LandingContainer = styled.div`
   background: linear-gradient(135deg, #2193b0, #68d0e9);
@@ -43,7 +38,6 @@ const LandingPage = props => {
   `;
 
   const HeaderLogo = styled.img`
-    // height: 20px;
     width: 200px;
     margin-bottom: 4vh;
   `;
@@ -54,7 +48,6 @@ const LandingPage = props => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    // margin-bottom: 20vh;
   `
   const HeaderArtwork = styled.img`
     animation: ${FadeIn} 2s linear;

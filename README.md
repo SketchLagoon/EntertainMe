@@ -1,4 +1,4 @@
-# Entertainment Search README
+# EntertainmenMe README
 
 ![screenshot.png](screenshot.png)
 
@@ -22,7 +22,15 @@ This project is meant to demo my abilities to assemble a MERN stack project. Usi
 ## How can I run this app as well?
 
 1. Fork or Clone this repo 
+
 2. Creat a  `.env` file in the server folder and add your OMDB API token to the `OMDB_API_KEY` environment variable in this new file.
-3. Launch the client and server in development mode:
+
+3. Ensure your MySQL server is running
+
+4. Launch the client and server in development mode:
 
      `$ yarn start:dev`
+
+5. Confirm Sequelize created the Users and Movies tables
+
+6. Visit http://localhost:3000/ in your browser
