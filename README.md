@@ -6,6 +6,12 @@
 
 This project is meant to demo my abilities to assemble a MERN stack project. Using the OMDB API users can search up their favorites shows and movies, while logging storing them log back in at a later date to view information regarding the Show or Movie Title / Poster Image / IMDB rating / Movie Maturity Rating / Plot description / Movie Runtime. 
 
+## 3rd Party API Usage
+
+- [OMDB](https://www.omdbapi.com/)
+
+- [YouTube Data v3](https://developers.google.com/youtube/v3)
+
 ### My primary goals for this project:
 
 - enable users to search OMDB API for their favorite shows and movies
@@ -23,7 +29,11 @@ This project is meant to demo my abilities to assemble a MERN stack project. Usi
 
 1. Fork or Clone this repo 
 
-2. Creat a  `.env` file in the server folder and add your OMDB API token to the `OMDB_API_KEY` environment variable in this new file.
+2. Creat a  `.env` file in the server folder and add the following values, with their corresponding API access keys.
+
+    `OMDB_API_KEY`
+    
+    `YT_API_KEY`
 
 3. Ensure your MySQL server is running
 
