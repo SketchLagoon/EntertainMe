@@ -8,9 +8,7 @@ const SearchResultSummary = ({featuredMovie}) => {
     margin-top: 3vh;
     margin-left: 16px;
     margin-bottom: 16px;
-
     width: calc(100vw - 32px);
-
     background: #282c2f;
     padding: 32px 0 16px 0;
     border-radius: 10px;
@@ -64,7 +62,7 @@ const SearchResultSummary = ({featuredMovie}) => {
 
   const TrailerContainer = styled.div`
     overflow: hidden;
-    // Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625)
+    /* Calculated from the aspect ration of the content (in case of 16:9 it is 9/16= 0.5625) */
     padding-top: 56.25%;
     position: relative;
     width: 90%;

@@ -20,6 +20,7 @@ const SideNav = ({ open, setLoggedUser, user }) => {
     width: 40vw;
     border-radius: 0 10px 10px 0;
     overflow: hidden;
+
     @media (max-width: 576px) {
       width: 70vw;
     }
@@ -114,19 +115,17 @@ top:-50vh;
 
   return (
     <StyledMenu open={open}>
-      {user === null ? (
-        <AuthForms setLoggedUser={setLoggedUser} />
-      ) : (
-        <>
+      {
+      user === null ? 
+      ( <AuthForms setLoggedUser={setLoggedUser} />) : 
+      ( <>
           <h1>{user}</h1>
           <LogoutButton onClick={logout}>Logout</LogoutButton>
           <SideNavImg src="./img/iso-entertain.png"></SideNavImg>
-
           <Circle1></Circle1>
           <Circle2></Circle2>
-
-        </>
-      )}
+      </> )
+      }
     </StyledMenu>
   );
 };

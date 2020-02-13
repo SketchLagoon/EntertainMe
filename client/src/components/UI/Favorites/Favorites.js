@@ -22,13 +22,11 @@ const Favorites = props => {
 
     @media (min-width: 600px) {
       width: 100%;
-      /* flex-wrap: wrap; */
     }
 
     @media (min-width: 1025px) {
      height: calc(90vh - 48px);
      width: 50%;
-     /* margin-left: 25%; */
      overflow-y: scroll;
      flex-wrap: wrap;
      justify-content: center;
@@ -64,9 +62,10 @@ const Favorites = props => {
     padding-top: 4px;
     border-radius: 10px;
     box-shadow: inset 8px 8px 16px #202426, 
-            inset -8px -8px 16px #303438;
+                inset -8px -8px 16px #303438;
     margin-left: 16px;
     margin-bottom: 5vh;
+    
     @media (min-width: 1025px) {
       width: 30%;
       margin-left: 0;

@@ -27,9 +27,7 @@ const SearchHeader = props => {
   const handleSearchClick = e => {
     const searchQuery = document.getElementById("searchInput").value;
 
-    if (searchQuery === "") {
-      return
-    }
+    if (searchQuery === ""){ return }
     
     Movies.search(searchQuery)
       .then(response => response.data)
@@ -43,16 +41,6 @@ const SearchHeader = props => {
     e.preventDefault();
     return;
   };
-
-  //   const FadeIn = keyframes`
-  //   from {
-  //     opacity: 0
-  //   }
-  //   to {
-  //     opacity: 100
-  //   }
-  // `;
-  // animation: ${FadeIn} 2s linear;
 
   const HeaderBG = styled.div`
     width: 90vw;
@@ -70,6 +58,7 @@ const SearchHeader = props => {
     font-weight: 600;
     width: 50%;
     line-height: 61px;
+
     @media (max-width: 768px) {
       font-size: 25px;
       line-height: 31px;
