@@ -164,8 +164,17 @@ table {
                   handleFavorite={handleFavorite}
                 />
                 <SearchResultSummary featuredMovie={movieResult} />
+                {favorites.length && window.innerWidth > 1025 ? (
+                <Favorites
+                  favs={favorites}
+                  setMovieResult={setMovieResult}
+                  setHDPoster={setHDPoster}
+                />
+              ) : (
+                <></>
+              )}
               </DesktopWidth>
-              {favorites.length ? (
+              {favorites.length && window.innerWidth < 1025 ? (
                 <Favorites
                   favs={favorites}
                   setMovieResult={setMovieResult}

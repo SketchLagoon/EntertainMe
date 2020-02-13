@@ -10,6 +10,10 @@ const SearchResultHeader = props => {
     width: calc(100% - 32px);
     border-radius: 10px 10px 10px 10px;
     filter: drop-shadow(0 1rem 0.3rem rgba(0,0,0,0.2));
+    @media (min-width: 1025px) {
+    width: auto;
+    height: 90vh;
+    }
     `
 
   const FavButton = styled.div`
@@ -27,6 +31,9 @@ const SearchResultHeader = props => {
   const DesktopWidth = styled.div`
   @media (min-width: 600px) {
     width: 50vw;
+  }
+  @media (min-width: 1025px) {
+    width: auto;
   }
   `
 

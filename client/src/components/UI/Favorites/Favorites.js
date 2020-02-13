@@ -57,7 +57,10 @@ const Favorites = props => {
             inset -8px -8px 16px #303438;
     margin-left: 16px;
     margin-bottom: 5vh;
-    
+    @media (min-width: 1025px) {
+      width: 30%;
+      margin-left: 0;
+    }
   `;
 
   return (

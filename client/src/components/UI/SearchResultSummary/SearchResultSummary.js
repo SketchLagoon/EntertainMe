@@ -21,6 +21,16 @@ const SearchResultSummary = ({featuredMovie}) => {
       padding: 48px 0 16px 0;
       width: calc(50vw - 48px);
     }
+
+    @media (min-width: 1025px) {
+      padding: 0;
+      width: 33%;
+      height: 90vh;
+      margin: 32px 16px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   `;
 
   const Title = styled.h1`
