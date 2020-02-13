@@ -108,6 +108,10 @@ table {
       align-items: center;
       margin-bottom: 16px;
     }
+
+    @media (min-width: 1025px){
+      justify-content: center;
+    }
   `;
 
   useEffect(() => {
@@ -126,7 +130,6 @@ table {
           })
           .catch(err => console.log(err))
       : console.log("no user logged in");
-
   }, [user]);
 
   const getUser = (userId, email) => {
@@ -139,7 +142,7 @@ table {
     //To do
     //conditional logic to determine duplicate / unfavorite if new fav is duplicate
     newFavorite.UserId = parseInt(user);
-    console.log(newFavorite)
+    console.log(newFavorite);
     Movies.favorite(newFavorite);
     window.location.reload();
   };
@@ -164,8 +167,17 @@ table {
                   handleFavorite={handleFavorite}
                 />
                 <SearchResultSummary featuredMovie={movieResult} />
+                {favorites.length && window.innerWidth > 1025 ? (
+                  <Favorites
+                    favs={favorites}
+                    setMovieResult={setMovieResult}
+                    setHDPoster={setHDPoster}
+                  />
+                ) : (
+                  <></>
+                )}
               </DesktopWidth>
-              {favorites.length ? (
+              {favorites.length && window.innerWidth < 1025 ? (
                 <Favorites
                   favs={favorites}
                   setMovieResult={setMovieResult}
@@ -177,7 +189,10 @@ table {
             </>
           ) : (
             <>
-              <SearchHeader setMovieResult={setMovieResult} setHDPoster={setHDPoster}></SearchHeader>
+              <SearchHeader
+                setMovieResult={setMovieResult}
+                setHDPoster={setHDPoster}
+              ></SearchHeader>
             </>
           )}
         </Dashboard>

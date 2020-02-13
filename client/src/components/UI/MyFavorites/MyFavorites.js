@@ -18,7 +18,7 @@ const MyFavorites = props => {
     width: 100%;
     height: 30vh;
     border-radius: 15px;
-    marging-bottom: 10vh;
+    margin-bottom: 10vh;
     background-color: #41464a;
     // display: flex;
     @media (max-width: 768px) {

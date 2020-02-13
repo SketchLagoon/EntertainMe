@@ -98,9 +98,13 @@ class RegistrationForm extends Component {
   handleRegistrationSubmit = event => {
     const { email, password } = this.state;
 
-    Users.create(email, password).then(response => response.data);
+    if( email === "" || password === "" ) {
+      console.log("fields empty")
+    } else {
+      Users.create(email, password).then(response => response.data);
+      this.props.toggleLogReg();
+    }
 
-    this.props.toggleLogReg();
     event.preventDefault();
   };
 

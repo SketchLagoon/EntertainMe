@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import AuthForms from "../../AuthForms/AuthForms";
 
@@ -31,6 +31,7 @@ const SideNav = ({ open, setLoggedUser, user }) => {
     right: -250px;    
     opacity: 0.15;
     position: absolute;
+    z-index: 0;
 
     @media (min-width: 600px) {
       width: auto;
@@ -49,6 +50,8 @@ const SideNav = ({ open, setLoggedUser, user }) => {
     background-color: rgba(255, 255, 255, 0.66);
     color: #2193b0;
     font-weight: 400;
+    position: relative;
+    z-index: 2;
 
     &:hover {
       background-color: rgba(255, 255, 255, 1);
@@ -58,6 +61,50 @@ const SideNav = ({ open, setLoggedUser, user }) => {
       background-color: rgba(255, 255, 255, 0.3);
     }
   `;
+
+const FadeIn = keyframes`
+from {
+  opacity: 0;
+}
+to {
+  opacity: 100;
+}
+`;
+
+const Circle1 = styled.div`
+animation: ${FadeIn} 3s linear;
+height: 100vh;
+width: 100vh;
+background-color: rgba(255,255,255,0.1);
+border-radius: 50%;
+position: absolute;
+z-index: 0;
+top: -25vh;
+left: -12vh;
+
+@media (min-width: 1025px) {
+  height: 90vw;
+  width: 90vw;
+}
+`
+
+const Circle2 = styled.div`
+animation: ${FadeIn} 3s linear;
+height: 90vh;
+width: 90vh;
+background-color: rgba(255,255,255,0.1);
+border-radius: 50%;
+position: absolute;
+z-index: 0;
+top:-50vh;
+
+@media (min-width: 1025px) {
+  height: 90vw;
+  width: 90vw;
+  top:-120vh;
+  right: -75vh;
+}
+`
 
   const logout = () => {
     sessionStorage.removeItem("email");
@@ -74,6 +121,10 @@ const SideNav = ({ open, setLoggedUser, user }) => {
           <h1>{user}</h1>
           <LogoutButton onClick={logout}>Logout</LogoutButton>
           <SideNavImg src="./img/iso-entertain.png"></SideNavImg>
+
+          <Circle1></Circle1>
+          <Circle2></Circle2>
+
         </>
       )}
     </StyledMenu>

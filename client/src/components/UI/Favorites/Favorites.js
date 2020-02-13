@@ -22,11 +22,17 @@ const Favorites = props => {
 
     @media (min-width: 600px) {
       width: 100%;
-      flex-wrap: wrap;
-      overflow: visible;
+      /* flex-wrap: wrap; */
     }
 
-
+    @media (min-width: 1025px) {
+     height: calc(90vh - 48px);
+     width: 50%;
+     /* margin-left: 25%; */
+     overflow-y: scroll;
+     flex-wrap: wrap;
+     justify-content: center;
+    }
   `;
 
   const FavoritesCard = styled.img`
@@ -46,6 +52,10 @@ const Favorites = props => {
         bottom: 16px;
       }
     }
+
+    @media (min-width: 1025px) {
+      margin: 0 8px 16px 8px;
+    }
   `;
 
   const FavoritesBG = styled.div`
@@ -57,7 +67,14 @@ const Favorites = props => {
             inset -8px -8px 16px #303438;
     margin-left: 16px;
     margin-bottom: 5vh;
-    
+    @media (min-width: 1025px) {
+      width: 30%;
+      margin-left: 0;
+      height: 90vh;
+      padding-top: 0;
+      margin-top: 28px;
+      margin-bottom: 0;
+    }
   `;
 
   return (
