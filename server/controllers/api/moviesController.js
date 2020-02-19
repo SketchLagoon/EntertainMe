@@ -7,23 +7,16 @@ moviesController.post('/search', (req, res) => {
   const { searchQuery } = req.body;
   fetch(`https://www.omdbapi.com/?t=${searchQuery}&y=&plot=long&apikey=${process.env.OMDB_API_KEY}`)
     .then(response => response.json())
-    // .then(async data => {
-    //   const queryURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${data.Title}%20trailer&key=${process.env.YT_API_KEY}`;
-    //   const response = await axios.get(queryURL);
-    //   const vidId = response.data.items[0].id.videoId;
-    //   const embedSRC = `https://www.youtube.com/embed/${vidId}`
-    //   data.embedSRC = embedSRC.toString()
-    //   if (data.Poster === "N/A") {
-    //     data.Poster = "./img/no-poster.png"
-    //     data.embedSRC = ""
-    //   }
-    //   res.json(data)
-    // })
-    .then(data=>{
+    .then(async data => {
+      const queryURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${data.Title}%20trailer&key=${process.env.YT_API_KEY}`;
+      const response = await axios.get(queryURL);
+      const vidId = response.data.items[0].id.videoId;
+      const embedSRC = `https://www.youtube.com/embed/${vidId}`
+      data.embedSRC = embedSRC.toString()
       if (data.Poster === "N/A") {
         data.Poster = "./img/no-poster.png"
+        data.embedSRC = ""
       }
-      data.embedSRC = ""
       res.json(data)
     })
     .catch(err=>res.json(err))
@@ -37,10 +30,6 @@ moviesController.post('/', (req,res)=>{
 })
 
 moviesController.post('/favorites', (req,res)=>{
-  console.log(req.body)
-  // if (req.body.Poster === "N/A") {
-  //   req.body.Poster = "./client/public/img/no-poster.png"
-  // }
   db.Movie.findAll({where: {UserId: parseInt(req.body.userId)}})
     .then(movies=>res.json(movies))
     .catch(err=>res.json(err))
